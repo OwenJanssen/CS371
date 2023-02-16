@@ -30,7 +30,7 @@ class MyAgent(Pythonian):
         print(answer)
 
 # Use convenience function to create an instance of your agent 
-agent = MyAgent.parse_command_line_args()
+agent = MyAgent.init_check_companions()
 
 # Start listening for KQML messages from Companion 
 agent.listen()
