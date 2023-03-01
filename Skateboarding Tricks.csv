@@ -1,9 +1,9 @@
-Trick Name,Alternative Names,Board Rotation,Body Rotation,Rotation Direction,Board Flip,Difficulty
+Trick Name,Alternative Name,Board Rotation,Body Rotation,Rotation Direction,Board Flip,Difficulty
 Ollie,,,,,,1
 Shove-it,,180,,BS,,1
 Shove-it,,180,,FS,,2
-Body Varial,,None,180,FS,,1
-Body Varial,,None,180,BS,,1
+Body Varial,,,180,FS,,1
+Body Varial,,,180,BS,,1
 180,,180,180,FS,,1
 180,,180,180,BS,,3
 Kickflip,,,,,Kickflip,4
