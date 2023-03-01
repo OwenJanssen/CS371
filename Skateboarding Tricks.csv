@@ -1,11 +1,11 @@
 Trick Name,Alternative Name,Board Rotation,Body Rotation,Rotation Direction,Board Flip,Difficulty
 Ollie,,,,,,1
-Shove-it,,180,,BS,,1
-Shove-it,,180,,FS,,2
-Body Varial,,,180,FS,,1
-Body Varial,,,180,BS,,1
-180,,180,180,FS,,1
-180,,180,180,BS,,3
+Bs Shove-it,,180,,BS,,1
+Fs Shove-it,,180,,FS,,2
+Fs Body Varial,,,180,FS,,1
+Bs Body Varial,,,180,BS,,1
+ Fs 180,,180,180,FS,,1
+Bs 180,,180,180,BS,,3
 Kickflip,,,,,Kickflip,4
 Heelflip,,,,,Heelflip,5
 Varial Flip,,180,,BS,Kickflip,5
@@ -14,10 +14,10 @@ Varial Heel,,180,,FS,Heelflip,6
 Inward Heel,,180,,BS,Heelflip,7
 FS Flip,,180,180,FS,Kickflip,7
 BS Flip,,180,180,BS,Kickflip,7
-360 Shove-it,,360,,BS,,4
-360 Shove-it,,360,,FS,,5
-Big spin,,360,180,BS,,4
-Big spin,,360,180,FS,,5
+Bs 360 Shove-it,,360,,BS,,4
+Fs 360 Shove-it,,360,,FS,,5
+Bs Big spin,,360,180,BS,,4
+Fs Big spin,,360,180,FS,,5
 360 Flip,Tre Flip,360,,BS,Kickflip,6
 Lazer Flip,,360,,FS,Heelflip,8
 Big Flip,,360,180,BS,Kickflip,7

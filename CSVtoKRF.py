@@ -11,54 +11,56 @@ script_dir = os.path.dirname(script_path)
 os.chdir(script_dir)
 tricks = pd.read_csv("Skateboarding Tricks.csv")
 
-print(tricks)
 facts = ""
 
 facts += "(genls SkateboardingTrick (TransporterStuntFn Skateboard))\n"
-facts += "(isa SkateboardingTrick TemporalObjectType)\n"
+facts += "(isa SkateboardingTrick TemporalObjectType)\n\n"
 
 facts += "(isa RotationDirection FirstOrderCollection)\n"
 facts += "(isa Clockwise Collection)\n"
 facts += "(genls Clockwise RotationDirection)\n"
 facts += "(isa Counter-clockwise Collection)\n"
-facts += "(genls Counter-clockwise RotationDirection)\n"
+facts += "(genls Counter-clockwise RotationDirection)\n\n"
 
-facts += "(isa TrickComponent FirstOrderCollection)\n"
+facts += "(isa TrickComponent FirstOrderCollection)\n\n"
 
 facts += "(isa BoardRotation FunctionOrFunctionalPredicate)\n"
 facts += "(arity BoardRotation 2)\n"
 facts += "(arg1isa BoardRotation RotationDirection)\n"
 facts += "(arg2isa BoardRotation Integer)\n"
-facts += "(resultIsa BoardRotation TrickComponent)\n"
+facts += "(resultIsa BoardRotation TrickComponent)\n\n"
 
 facts += "(isa BodyRotation FunctionOrFunctionalPredicate)\n"
 facts += "(arity BoardRotation 2)\n"
 facts += "(arg1isa BoardRotation RotationDirection)\n"
 facts += "(arg2isa BoardRotation Integer)\n"
-facts += "(resultIsa BoardRotation TrickComponent)\n"
+facts += "(resultIsa BoardRotation TrickComponent)\n\n"
 
 facts += "(isa BoardFlip FunctionOrFunctionalPredicate)\n"
 facts += "(arity BoardFlip 2)\n"
 facts += "(arg1isa BoardFlip RotationDirection)\n"
 facts += "(arg2isa BoardFlip Integer)\n"
-facts += "(resultIsa BoardFlip TrickComponent)\n"
+facts += "(resultIsa BoardFlip TrickComponent)\n\n"
 
 facts += "(isa trickContains Predicate)\n"
 facts += "(arity trickContains 2)\n"
 facts += "(arg1Isa trickContains SkateboardingTrick)\n"
-facts += "(arg2Isa trickContains TrickComponent)\n"
+facts += "(arg2Isa trickContains TrickComponent)\n\n"
 
 for index, trick in tricks.iterrows():
-    name = str(trick["Trick Name"])
-    rotationDirection = str(trick["Rotation Direction"]) if trick["Rotation Direction"]!="NaN" else "Clockwise"
-    boardRotation = str(trick["Board Rotation"]) if trick["Board Rotation"]!="NaN" else "0"
-    bodyRotation = str(trick["Body Rotation"]) if trick["Body Rotation"]!="NaN" else "0"
-    boardFlip = str(trick["Board Flip"]) if trick["Board Flip"]!="NaN" else "0"
+    name = str(trick["Trick Name"]).replace(" ", "")
+    rotationDirection = str(trick["Rotation Direction"]) if str(trick["Rotation Direction"])!="nan" else "Clockwise"
+    boardRotation = str(trick["Board Rotation"]).replace(".0", "") if str(trick["Board Rotation"])!="nan" else "0"
+    bodyRotation = str(trick["Body Rotation"]).replace(".0", "") if str(trick["Body Rotation"])!="nan" else "0"
+    boardFlip = str(trick["Board Flip"]) if str(trick["Board Flip"])!="nan" else "0"
     
     facts += "(genls " + name + " SkateboardingTrick)\n"
-    if trick["Alternative Name"] != "NaN":
-        # define the trick having another name
-        facts += "(equals " + name + str(trick["Alternative Name"]) + ")\n"
+    facts += "(isa " + name + " FirstOrderCollection)\n"
+    alternativeName = str(trick["Alternative Name"]).replace(" ", "")
+    if alternativeName != "nan":
+        facts += "(genls " + alternativeName + " SkateboardingTrick)\n"
+        facts += "(isa " + alternativeName + " FirstOrderCollection)\n"
+        facts += "(equals " + name + " " + alternativeName + ")\n"
 
     if rotationDirection == "BS":
         rotationDirection = "Clockwise"
@@ -87,7 +89,7 @@ for index, trick in tricks.iterrows():
         boardFlip = "720"
         boardFlipDirection = "Counter-clockwise"
 
-    facts += "(trickContains " + name + " (BoardFlip " + boardFlipDirection + " " + boardFlip + "))\n"
+    facts += "(trickContains " + name + " (BoardFlip " + boardFlipDirection + " " + boardFlip + "))\n\n"
 
 f = open("skateboardfacts.krf", "w")
 f.write(facts)
