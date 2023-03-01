@@ -1,7 +1,3 @@
-# TODO:
-# Remove spaces from trick names
-# Fix NaNs in equals expressions
-
 # Import skateboarding tricks
 import os
 import os.path
