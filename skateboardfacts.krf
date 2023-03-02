@@ -1,25 +1,3 @@
-(in-microtheory BaseKB)
-
-
-(isa resetKRRHomeworkState ComplexActionPredicate)
-; (arity resetKRRHomeworkState 1)
-; (arg1Isa resetKRRHomeworkState Thing)
-(comment resetKRRHomeworkState 
-  "(resetKRRHomeworkState) resets microtheories and clears working memory")
-
-
-(preconditionForMethod
- (true)
- (methodForAction
-  (resetKRRHomeworkState)
-  (actionSequence
-   (TheList
-    (doAnnounce "Clearing KRR-Winter2020RulesMt")
-    (doForgetKBMt NU-Skateboarding)
-    (doAnnounce "Clearing working memory")
-    (doClearWorkingMemory)
-    ))))
-
 (in-microtheory NU-Skateboarding)
 
 (genls SkateboardingTrick (TransporterStuntFn Skateboard))
@@ -70,14 +48,14 @@
 
 (genls FsShove-it SkateboardingTrick)
 (isa FsShove-it FirstOrderCollection)
-(trickContains FsShove-it (BoardRotation FS 180))
-(trickContains FsShove-it (BodyRotation FS 0))
+(trickContains FsShove-it (BoardRotation Counter-Clockwise 180))
+(trickContains FsShove-it (BodyRotation Counter-Clockwise 0))
 (trickContains FsShove-it (BoardFlip Clockwise 0))
 
 (genls FsBodyVarial SkateboardingTrick)
 (isa FsBodyVarial FirstOrderCollection)
-(trickContains FsBodyVarial (BoardRotation FS 0))
-(trickContains FsBodyVarial (BodyRotation FS 180))
+(trickContains FsBodyVarial (BoardRotation Counter-Clockwise 0))
+(trickContains FsBodyVarial (BodyRotation Counter-Clockwise 180))
 (trickContains FsBodyVarial (BoardFlip Clockwise 0))
 
 (genls BsBodyVarial SkateboardingTrick)
@@ -88,8 +66,8 @@
 
 (genls Fs180 SkateboardingTrick)
 (isa Fs180 FirstOrderCollection)
-(trickContains Fs180 (BoardRotation FS 180))
-(trickContains Fs180 (BodyRotation FS 180))
+(trickContains Fs180 (BoardRotation Counter-Clockwise 180))
+(trickContains Fs180 (BodyRotation Counter-Clockwise 180))
 (trickContains Fs180 (BoardFlip Clockwise 0))
 
 (genls Bs180 SkateboardingTrick)
@@ -118,14 +96,14 @@
 
 (genls HardFlip SkateboardingTrick)
 (isa HardFlip FirstOrderCollection)
-(trickContains HardFlip (BoardRotation FS 180))
-(trickContains HardFlip (BodyRotation FS 0))
+(trickContains HardFlip (BoardRotation Counter-Clockwise 180))
+(trickContains HardFlip (BodyRotation Counter-Clockwise 0))
 (trickContains HardFlip (BoardFlip Clockwise 360))
 
 (genls VarialHeel SkateboardingTrick)
 (isa VarialHeel FirstOrderCollection)
-(trickContains VarialHeel (BoardRotation FS 180))
-(trickContains VarialHeel (BodyRotation FS 0))
+(trickContains VarialHeel (BoardRotation Counter-Clockwise 180))
+(trickContains VarialHeel (BodyRotation Counter-Clockwise 0))
 (trickContains VarialHeel (BoardFlip Counter-clockwise 360))
 
 (genls InwardHeel SkateboardingTrick)
@@ -134,17 +112,17 @@
 (trickContains InwardHeel (BodyRotation Clockwise 0))
 (trickContains InwardHeel (BoardFlip Counter-clockwise 360))
 
-(genls FSFlip SkateboardingTrick)
-(isa FSFlip FirstOrderCollection)
-(trickContains FSFlip (BoardRotation FS 180))
-(trickContains FSFlip (BodyRotation FS 180))
-(trickContains FSFlip (BoardFlip Clockwise 360))
+(genls FsFlip SkateboardingTrick)
+(isa FsFlip FirstOrderCollection)
+(trickContains FsFlip (BoardRotation Counter-Clockwise 180))
+(trickContains FsFlip (BodyRotation Counter-Clockwise 180))
+(trickContains FsFlip (BoardFlip Clockwise 360))
 
-(genls BSFlip SkateboardingTrick)
-(isa BSFlip FirstOrderCollection)
-(trickContains BSFlip (BoardRotation Clockwise 180))
-(trickContains BSFlip (BodyRotation Clockwise 180))
-(trickContains BSFlip (BoardFlip Clockwise 360))
+(genls BsFlip SkateboardingTrick)
+(isa BsFlip FirstOrderCollection)
+(trickContains BsFlip (BoardRotation Clockwise 180))
+(trickContains BsFlip (BodyRotation Clockwise 180))
+(trickContains BsFlip (BoardFlip Clockwise 360))
 
 (genls Bs360Shove-it SkateboardingTrick)
 (isa Bs360Shove-it FirstOrderCollection)
@@ -154,8 +132,8 @@
 
 (genls Fs360Shove-it SkateboardingTrick)
 (isa Fs360Shove-it FirstOrderCollection)
-(trickContains Fs360Shove-it (BoardRotation FS 360))
-(trickContains Fs360Shove-it (BodyRotation FS 0))
+(trickContains Fs360Shove-it (BoardRotation Counter-Clockwise 360))
+(trickContains Fs360Shove-it (BodyRotation Counter-Clockwise 0))
 (trickContains Fs360Shove-it (BoardFlip Clockwise 0))
 
 (genls BsBigspin SkateboardingTrick)
@@ -166,8 +144,8 @@
 
 (genls FsBigspin SkateboardingTrick)
 (isa FsBigspin FirstOrderCollection)
-(trickContains FsBigspin (BoardRotation FS 360))
-(trickContains FsBigspin (BodyRotation FS 180))
+(trickContains FsBigspin (BoardRotation Counter-Clockwise 360))
+(trickContains FsBigspin (BodyRotation Counter-Clockwise 180))
 (trickContains FsBigspin (BoardFlip Clockwise 0))
 
 (genls 360Flip SkateboardingTrick)
@@ -181,8 +159,8 @@
 
 (genls LazerFlip SkateboardingTrick)
 (isa LazerFlip FirstOrderCollection)
-(trickContains LazerFlip (BoardRotation FS 360))
-(trickContains LazerFlip (BodyRotation FS 0))
+(trickContains LazerFlip (BoardRotation Counter-Clockwise 360))
+(trickContains LazerFlip (BodyRotation Counter-Clockwise 0))
 (trickContains LazerFlip (BoardFlip Counter-clockwise 360))
 
 (genls BigFlip SkateboardingTrick)
@@ -193,33 +171,33 @@
 
 (genls BigHeel SkateboardingTrick)
 (isa BigHeel FirstOrderCollection)
-(trickContains BigHeel (BoardRotation FS 360))
-(trickContains BigHeel (BodyRotation FS 180))
+(trickContains BigHeel (BoardRotation Counter-Clockwise 360))
+(trickContains BigHeel (BodyRotation Counter-Clockwise 180))
 (trickContains BigHeel (BoardFlip Counter-clockwise 360))
 
-(genls 360 SkateboardingTrick)
-(isa 360 FirstOrderCollection)
-(trickContains 360 (BoardRotation FS 360))
-(trickContains 360 (BodyRotation FS 360))
-(trickContains 360 (BoardFlip Clockwise 0))
+(genls Fs360 SkateboardingTrick)
+(isa Fs360 FirstOrderCollection)
+(trickContains Fs360 (BoardRotation Counter-Clockwise 360))
+(trickContains Fs360 (BodyRotation Counter-Clockwise 360))
+(trickContains Fs360 (BoardFlip Clockwise 0))
 
-(genls 360 SkateboardingTrick)
-(isa 360 FirstOrderCollection)
-(trickContains 360 (BoardRotation Clockwise 360))
-(trickContains 360 (BodyRotation Clockwise 360))
-(trickContains 360 (BoardFlip Clockwise 0))
+(genls Bs360 SkateboardingTrick)
+(isa Bs360 FirstOrderCollection)
+(trickContains Bs360 (BoardRotation Clockwise 360))
+(trickContains Bs360 (BodyRotation Clockwise 360))
+(trickContains Bs360 (BoardFlip Clockwise 0))
 
-(genls FS360Flip SkateboardingTrick)
-(isa FS360Flip FirstOrderCollection)
-(trickContains FS360Flip (BoardRotation FS 360))
-(trickContains FS360Flip (BodyRotation FS 360))
-(trickContains FS360Flip (BoardFlip Clockwise 360))
+(genls Fs360Flip SkateboardingTrick)
+(isa Fs360Flip FirstOrderCollection)
+(trickContains Fs360Flip (BoardRotation Counter-Clockwise 360))
+(trickContains Fs360Flip (BodyRotation Counter-Clockwise 360))
+(trickContains Fs360Flip (BoardFlip Clockwise 360))
 
-(genls BS360Flip SkateboardingTrick)
-(isa BS360Flip FirstOrderCollection)
-(trickContains BS360Flip (BoardRotation Clockwise 360))
-(trickContains BS360Flip (BodyRotation Clockwise 360))
-(trickContains BS360Flip (BoardFlip Counter-clockwise 360))
+(genls Bs360Flip SkateboardingTrick)
+(isa Bs360Flip FirstOrderCollection)
+(trickContains Bs360Flip (BoardRotation Clockwise 360))
+(trickContains Bs360Flip (BodyRotation Clockwise 360))
+(trickContains Bs360Flip (BoardFlip Counter-clockwise 360))
 
 (genls DoubleKickflip SkateboardingTrick)
 (isa DoubleKickflip FirstOrderCollection)
@@ -250,8 +228,8 @@
 
 (genls VarialDoubleHeel SkateboardingTrick)
 (isa VarialDoubleHeel FirstOrderCollection)
-(trickContains VarialDoubleHeel (BoardRotation FS 180))
-(trickContains VarialDoubleHeel (BodyRotation FS 0))
+(trickContains VarialDoubleHeel (BoardRotation Counter-Clockwise 180))
+(trickContains VarialDoubleHeel (BodyRotation Counter-Clockwise 0))
 (trickContains VarialDoubleHeel (BoardFlip Counter-clockwise 720))
 
 (genls 360DoubleFlip SkateboardingTrick)
@@ -302,3 +280,16 @@
 (arity personKnowsTrickComponent 2)
 (arg1Isa personKnowsTrickComponent Person)
 (arg2Isa personKnowsTrickComponent TrickComponent)
+
+(<== (personKnowsTrickComponent ?person ?trickComponent)
+ (personKnowsTrick ?person ?trick)
+ (trickContains ?trick ?trickComponent))
+
+(isa personCanLearnTrick Predicate)
+(arity personCanLearnTrick 2)
+(arg1Isa personCanLearnTrick Person)
+(arg2Isa personCanLearnTrick SkateboardingTrick)
+(<== (personCanLearnTrick ?person ?trick)
+ (personKnowsTrickComponent ?person ?trickComponent)
+ (trickContains ?trick ?trickComponent))
+

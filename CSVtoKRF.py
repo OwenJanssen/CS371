@@ -58,10 +58,10 @@ for index, trick in tricks.iterrows():
         facts += "(isa " + alternativeName + " FirstOrderCollection)\n"
         facts += "(equals " + name + " " + alternativeName + ")\n"
 
-    if rotationDirection == "BS":
+    if "BS" in rotationDirection:
         rotationDirection = "Clockwise"
     
-    elif rotationDirection == "BS":
+    elif "FS" in rotationDirection:
         rotationDirection = "Counter-Clockwise"
 
     facts += "(trickContains " + name + " (BoardRotation " + rotationDirection + " " + boardRotation + "))\n"
@@ -87,9 +87,11 @@ for index, trick in tricks.iterrows():
 
     facts += "(trickContains " + name + " (BoardFlip " + boardFlipDirection + " " + boardFlip + "))\n\n"
 
-facts += "(isa personKnowsTrick Predicate)\n(arity personKnowsTrick 2)\n(arg1Isa personKnowsTrick Person)\n(arg2Isa personKnowsTrick SkateboardingTrick)\n"
-facts += "(isa personKnowsTrickComponent Predicate)\n(arity personKnowsTrickComponent 2)\n(arg1Isa personKnowsTrickComponent Person)\n(arg2Isa personKnowsTrickComponent TrickComponent)\n"
-facts += "(<== (personKnowsTrickComponent ?person ?trickComponent)\n (personKnowsTrick ?person ?trick)\n (trickContains ?trick ?trickComponent))"
+facts += "(isa personKnowsTrick Predicate)\n(arity personKnowsTrick 2)\n(arg1Isa personKnowsTrick Person)\n(arg2Isa personKnowsTrick SkateboardingTrick)\n\n"
+facts += "(isa personKnowsTrickComponent Predicate)\n(arity personKnowsTrickComponent 2)\n(arg1Isa personKnowsTrickComponent Person)\n(arg2Isa personKnowsTrickComponent TrickComponent)\n\n"
+facts += "(<== (personKnowsTrickComponent ?person ?trickComponent)\n (personKnowsTrick ?person ?trick)\n (trickContains ?trick ?trickComponent))\n\n"
+facts += "(isa personCanLearnTrick Predicate)\n(arity personCanLearnTrick 2)\n(arg1Isa personCanLearnTrick Person)\n(arg2Isa personCanLearnTrick SkateboardingTrick)\n"
+facts += "(<== (personCanLearnTrick ?person ?trick)\n (personKnowsTrickComponent ?person ?trickComponent)\n (trickContains ?trick ?trickComponent))\n\n"
 
 f = open("skateboardfacts.krf", "w")
 f.write(facts)
