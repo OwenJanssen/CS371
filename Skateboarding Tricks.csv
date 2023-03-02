@@ -4,7 +4,7 @@ Bs Shove-it,,180,,BS,,1
 Fs Shove-it,,180,,FS,,2
 Fs Body Varial,,,180,FS,,1
 Bs Body Varial,,,180,BS,,1
- Fs 180,,180,180,FS,,1
+Fs 180,,180,180,FS,,1
 Bs 180,,180,180,BS,,3
 Kickflip,,,,,Kickflip,4
 Heelflip,,,,,Heelflip,5
@@ -12,8 +12,8 @@ Varial Flip,,180,,BS,Kickflip,5
 Hard Flip,,180,,FS,Kickflip,7
 Varial Heel,,180,,FS,Heelflip,6
 Inward Heel,,180,,BS,Heelflip,7
-FS Flip,,180,180,FS,Kickflip,7
-BS Flip,,180,180,BS,Kickflip,7
+Fs Flip,,180,180,FS,Kickflip,7
+Bs Flip,,180,180,BS,Kickflip,7
 Bs 360 Shove-it,,360,,BS,,4
 Fs 360 Shove-it,,360,,FS,,5
 Bs Big spin,,360,180,BS,,4
@@ -22,10 +22,10 @@ Fs Big spin,,360,180,FS,,5
 Lazer Flip,,360,,FS,Heelflip,8
 Big Flip,,360,180,BS,Kickflip,7
 Big Heel,,360,180,FS,Heelflip,8
-360,,360,360,FS,,6
-360,,360,360,BS,,6
-FS 360 Flip,,360,360,FS,Kickflip,10
-BS 360 Flip,,360,360,BS,Heelflip,9
+Fs 360,,360,360,FS,,6
+Bs 360,,360,360,BS,,6
+Fs 360 Flip,,360,360,FS,Kickflip,10
+Bs 360 Flip,,360,360,BS,Heelflip,9
 Double Kickflip,Double Flip,,,,2 Kickflips,6
 Double Heelflip,Double Heel,,,,2 Heelflips,7
 Varial Double Flip,Nightmare Flip,180,,BS,2 Kickflips,7
