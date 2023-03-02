@@ -7,7 +7,7 @@ script_dir = os.path.dirname(script_path)
 os.chdir(script_dir)
 tricks = pd.read_csv("Skateboarding Tricks.csv")
 
-facts = ""
+facts = "(in-microtheory NU-Skateboarding)\n\n"
 
 facts += "(genls SkateboardingTrick (TransporterStuntFn Skateboard))\n"
 facts += "(isa SkateboardingTrick TemporalObjectType)\n\n"
@@ -86,6 +86,10 @@ for index, trick in tricks.iterrows():
         boardFlipDirection = "Counter-clockwise"
 
     facts += "(trickContains " + name + " (BoardFlip " + boardFlipDirection + " " + boardFlip + "))\n\n"
+
+facts += "(isa personKnowsTrick Predicate)\n(arity personKnowsTrick 2)\n(arg1Isa personKnowsTrick Person)\n(arg2Isa personKnowsTrick SkateboardingTrick)\n"
+facts += "(isa personKnowsTrickComponent Predicate)\n(arity personKnowsTrickComponent 2)\n(arg1Isa personKnowsTrickComponent Person)\n(arg2Isa personKnowsTrickComponent TrickComponent)\n"
+facts += "(<== (personKnowsTrickComponent ?person ?trickComponent)\n (personKnowsTrick ?person ?trick)\n (trickContains ?trick ?trickComponent))"
 
 f = open("skateboardfacts.krf", "w")
 f.write(facts)

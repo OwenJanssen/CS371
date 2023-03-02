@@ -1,0 +1,7 @@
+(in-microtheory NU-Skateboarding)
+
+(isa Owen Person)
+
+(personKnowsTrick Owen Fs180)
+
+(personKnowsTrick Owen Kickflip)

@@ -1,3 +1,27 @@
+(in-microtheory BaseKB)
+
+
+(isa resetKRRHomeworkState ComplexActionPredicate)
+; (arity resetKRRHomeworkState 1)
+; (arg1Isa resetKRRHomeworkState Thing)
+(comment resetKRRHomeworkState 
+  "(resetKRRHomeworkState) resets microtheories and clears working memory")
+
+
+(preconditionForMethod
+ (true)
+ (methodForAction
+  (resetKRRHomeworkState)
+  (actionSequence
+   (TheList
+    (doAnnounce "Clearing KRR-Winter2020RulesMt")
+    (doForgetKBMt NU-Skateboarding)
+    (doAnnounce "Clearing working memory")
+    (doClearWorkingMemory)
+    ))))
+
+(in-microtheory NU-Skateboarding)
+
 (genls SkateboardingTrick (TransporterStuntFn Skateboard))
 (isa SkateboardingTrick TemporalObjectType)
 
@@ -269,3 +293,12 @@
 (trickContains Biggerflip (BodyRotation Clockwise 180))
 (trickContains Biggerflip (BoardFlip Clockwise 360))
 
+(isa personKnowsTrick Predicate)
+(arity personKnowsTrick 2)
+(arg1Isa personKnowsTrick Person)
+(arg2Isa personKnowsTrick SkateboardingTrick)
+
+(isa personKnowsTrickComponent Predicate)
+(arity personKnowsTrickComponent 2)
+(arg1Isa personKnowsTrickComponent Person)
+(arg2Isa personKnowsTrickComponent TrickComponent)
