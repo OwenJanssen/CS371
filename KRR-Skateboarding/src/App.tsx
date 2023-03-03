@@ -132,6 +132,11 @@ function App() {
     facts += "(arg1Isa trickContains SkateboardingTrick)\n"
     facts += "(arg2Isa trickContains TrickComponent)\n\n"
 
+    facts += "(isa trickDifficulty Predicate)\n"
+    facts += "(arity trickDifficulty 2)\n"
+    facts += "(arg1Isa trickDifficulty SkateboardingTrick)\n"
+    facts += "(arg2Isa trickDifficulty Integer)\n\n"
+
     if (!error) {
       for (const trick of tricks) {
         var name = String(trick["Trick Name"]).replaceAll(" ", "")
@@ -184,17 +189,23 @@ function App() {
         if (boardFlip == "0") {
           facts += "(trickContains " + name + " (BoardFlip " + "Counter-clockwise" + " " + boardFlip + "))\n"
         }
-        facts += "(trickContains " + name + " (BoardFlip " + boardFlipDirection + " " + boardFlip + "))\n\n"
+        facts += "(trickContains " + name + " (BoardFlip " + boardFlipDirection + " " + boardFlip + "))\n"
+
+        facts += "(trickDifficulty " + name + " " + trick["Difficulty"] + ")\n\n"
       }
     }
 
     facts += "(isa personKnowsTrick Predicate)\n(arity personKnowsTrick 2)\n(arg1Isa personKnowsTrick Person)\n(arg2Isa personKnowsTrick SkateboardingTrick)\n\n"
     facts += "(isa personKnowsTrickComponent Predicate)\n(arity personKnowsTrickComponent 2)\n(arg1Isa personKnowsTrickComponent Person)\n(arg2Isa personKnowsTrickComponent TrickComponent)\n\n"
     facts += "(<== (personKnowsTrickComponent ?person ?trickComponent)\n (personKnowsTrick ?person ?trick)\n (trickContains ?trick ?trickComponent))\n\n"
+
     facts += "(isa personCanLearnTrick Predicate)\n(arity personCanLearnTrick 2)\n(arg1Isa personCanLearnTrick Person)\n(arg2Isa personCanLearnTrick SkateboardingTrick)\n"
     facts += "(<== (personCanLearnTrick ?person ?trick)\n (personKnowsTrickComponent ?person (BoardRotation ?direction ?boardRotation))\n (personKnowsTrickComponent ?person (BodyRotation ?direction ?bodyRotation))\n (personKnowsTrickComponent ?person (BoardFlip ?flip-direction ?boardFlip))\n"
-    facts += " (trickContains ?trick (BoardRotation ?direction ?boardRotation))\n (trickContains ?trick (BodyRotation ?direction ?bodyRotation))\n (trickContains ?trick (BoardFlip ?flip-direction ?boardFlip))\n"
-    facts += " (not (personKnowsTrick ?person ?trick)))\n\n"
+    facts += " (trickContains ?trick (BoardRotation ?direction ?boardRotation))\n (trickContains ?trick (BodyRotation ?direction ?bodyRotation))\n (trickContains ?trick (BoardFlip ?flip-direction ?boardFlip)))\n\n"
+
+    facts += "(isa personShouldLearnTrick Predicate)\n(arity personShouldLearnTrick 3)\n(arg1Isa personShouldLearnTrick Person)\n(arg2Isa personShouldLearnTrick Integer)\n(arg3Isa personShouldLearnTrick Skateboarding)"
+    facts += "(<== (personShouldLearnTrick ?person ?difficulty ?trick)\n (trickDifficulty ?trick ?trick-difficulty)\n (lessThanOrEqualTo ?trick-difficuly ?difficulty))"
+    
 
     const file = new Blob([facts], {
       type: "text/plain",
@@ -234,7 +245,7 @@ function App() {
           <div style={{ marginTop: "3rem", display: "grid", gridTemplateColumns: "auto auto auto auto", columnGap: "50px", rowGap: "25px"}}>
               {error ? error : tricks.map((trick,idx) => 
                   <div key={idx}>
-                    <button style={{backgroundColor: selectedTricks.includes(trick["Trick Name"]) ? "green" : "black", width: "200px"}}
+                    <button style={{backgroundColor: selectedTricks.includes(trick["Trick Name"]) ? "green" : "black", color: "white", width: "200px"}}
                             onClick={() => updateSelectedTricks(trick["Trick Name"])}>
                       {trick["Trick Name"]}
                     </button>
