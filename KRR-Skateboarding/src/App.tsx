@@ -21,6 +21,8 @@ function App() {
 
   const [selectedTricks, setSelectedTricks] = useState<string[]>([])
 
+  const [parsed, setParsed] = useState(false)
+
   // This function will be called when
   // the file input changes
   const handleFileChange = (e) => {
@@ -45,7 +47,7 @@ function App() {
   };
 
   const handleParse = () => {
-       
+      setParsed(true)
       // If user clicks the parse button without
       // a file we show a error
       if (!file) return setError("Enter a valid file");
@@ -206,7 +208,7 @@ function App() {
   return (
       <div>
           <label htmlFor="csvInput" style={{ display: "block" }}>
-              Enter CSV File
+              Enter Skateboarding Tricks CSV File
           </label>
           <input
               onChange={handleFileChange}
@@ -214,27 +216,30 @@ function App() {
               name="file"
               type="File"
           />
-          <div>
+          
+          {file!=="" && <div>
               <button onClick={handleParse}>Parse</button>
-          </div>
+          </div>}
 
-          <div style={{display: "flex", flexDirection: "row", marginTop: "3rem", justifyContent: "space-between"}}>
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
-              <div style={{whiteSpace: "pre", fontSize: "Large"}}>Name: </div>
-              <input type="text" value={name} onChange={e => (setName(e.target.value))} style={{fontSize: "Large"}}/>
+          { parsed &&
+            <div style={{display: "flex", flexDirection: "row", marginTop: "3rem", justifyContent: "space-between"}}>
+              <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+                <div style={{whiteSpace: "pre", fontSize: "Large"}}>Name: </div>
+                <input type="text" value={name} onChange={e => (setName(e.target.value))} style={{fontSize: "Large"}}/>
+              </div>
+              <button style={{backgroundColor: "green"}} onClick={() => {writePersonalFactsFile(); writeGeneralFactsFile();}}>Download .krf files</button>
             </div>
-            <button style={{backgroundColor: "green"}} onClick={() => {writePersonalFactsFile(); writeGeneralFactsFile();}}>Download .krf files</button>
-          </div>
+          }
 
           <div style={{ marginTop: "3rem", display: "grid", gridTemplateColumns: "auto auto auto auto", columnGap: "50px", rowGap: "25px"}}>
-              {error ? error : tricks.map((trick,
-                idx) => 
-                <div key={idx}>
-                  <button style={{backgroundColor: selectedTricks.includes(trick["Trick Name"]) ? "green" : "black", width: "200px"}}
-                          onClick={() => updateSelectedTricks(trick["Trick Name"])}>
-                    {trick["Trick Name"]}
-                  </button>
-                </div>)}
+              {error ? error : tricks.map((trick,idx) => 
+                  <div key={idx}>
+                    <button style={{backgroundColor: selectedTricks.includes(trick["Trick Name"]) ? "green" : "black", width: "200px"}}
+                            onClick={() => updateSelectedTricks(trick["Trick Name"])}>
+                      {trick["Trick Name"]}
+                    </button>
+                  </div>)
+              }
           </div>
       </div>
   );
