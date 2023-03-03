@@ -130,38 +130,34 @@ function App() {
     facts += "(arg1Isa trickContains SkateboardingTrick)\n"
     facts += "(arg2Isa trickContains TrickComponent)\n\n"
 
-    facts += "(isa personKnowsTrick Predicate)\n(arity personKnowsTrick 2)\n(arg1Isa personKnowsTrick Person)\n(arg2Isa personKnowsTrick SkateboardingTrick)\n\n"
-    facts += "(isa personKnowsTrickComponent Predicate)\n(arity personKnowsTrickComponent 2)\n(arg1Isa personKnowsTrickComponent Person)\n(arg2Isa personKnowsTrickComponent TrickComponent)\n\n"
-    facts += "(<== (personKnowsTrickComponent ?person ?trickComponent)\n (personKnowsTrick ?person ?trick)\n (trickContains ?trick ?trickComponent))\n\n"
-    facts += "(isa personCanLearnTrick Predicate)\n(arity personCanLearnTrick 2)\n(arg1Isa personCanLearnTrick Person)\n(arg2Isa personCanLearnTrick SkateboardingTrick)\n"
-    facts += "(<== (personCanLearnTrick ?person ?trick)\n (personKnowsTrickComponent ?person ?trickComponent)\n (trickContains ?trick ?trickComponent))\n\n"
-
     if (!error) {
       for (const trick of tricks) {
-        var name = String(trick["Trick Name"]).replace(" ", "")
-        var rotationDirection = String(trick["Rotation Direction"])!="nan" ? String(trick["Rotation Direction"]) : "Clockwise"
-        var boardRotation = String(trick["Board Rotation"])!="nan" ? String(trick["Board Rotation"]).replace(".0", "") : "0"
-        var bodyRotation = String(trick["Body Rotation"])!="nan" ? String(trick["Body Rotation"]).replace(".0", "") : "0"
-        var boardFlip = String(trick["Board Flip"])!="nan" ? String(trick["Board Flip"]) : "0"
+        var name = String(trick["Trick Name"]).replaceAll(" ", "")
+        var rotationDirection = String(trick["Rotation Direction"])!="" ? String(trick["Rotation Direction"]) : "Clockwise"
+        var boardRotation = String(trick["Board Rotation"])!="" ? String(trick["Board Rotation"]).replace(".0", "") : "0"
+        var bodyRotation = String(trick["Body Rotation"])!="" ? String(trick["Body Rotation"]).replace(".0", "") : "0"
+        var boardFlip = String(trick["Board Flip"])!="" ? String(trick["Board Flip"]) : "0"
         
         facts += "(genls " + name + " SkateboardingTrick)\n"
         facts += "(isa " + name + " FirstOrderCollection)\n"
         var alternativeName = String(trick["Alternative Name"]).replaceAll(" ", "")
-        if (alternativeName != "nan"){
+        if (alternativeName != ""){
             facts += "(genls " + alternativeName + " SkateboardingTrick)\n"
             facts += "(isa " + alternativeName + " FirstOrderCollection)\n"
             facts += "(equals " + name + " " + alternativeName + ")\n"
         }
 
+        if (boardRotation == "0"){
+          facts += "(trickContains " + name + " (BoardRotation " + (rotationDirection == "Clockwise" ? "Counter-clockwise" : "Clockwise") + " " + boardRotation + "))\n"
+        }
         facts += "(trickContains " + name + " (BoardRotation " + rotationDirection + " " + boardRotation + "))\n"
+        if (bodyRotation == "0"){
+          facts += "(trickContains " + name + " (BodyRotation " + (rotationDirection == "Clockwise" ? "Counter-clockwise" : "Clockwise") + " " + bodyRotation + "))\n"
+        }
         facts += "(trickContains " + name + " (BodyRotation " + rotationDirection + " " + bodyRotation + "))\n"
         
         var boardFlipDirection = "Clockwise"
-        if (boardFlip == "None") {
-          boardFlip = "0"
-        }
-
-        else if (boardFlip == "Kickflip") {
+        if (boardFlip == "Kickflip") {
           boardFlip = "360"
         }
             
@@ -179,15 +175,30 @@ function App() {
           boardFlipDirection = "Counter-clockwise"
         }
 
+        else {
+          boardFlip = "0"
+        }
+
+        if (boardFlip == "0") {
+          facts += "(trickContains " + name + " (BoardFlip " + "Counter-clockwise" + " " + boardFlip + "))\n"
+        }
         facts += "(trickContains " + name + " (BoardFlip " + boardFlipDirection + " " + boardFlip + "))\n\n"
       }
     }
+
+    facts += "(isa personKnowsTrick Predicate)\n(arity personKnowsTrick 2)\n(arg1Isa personKnowsTrick Person)\n(arg2Isa personKnowsTrick SkateboardingTrick)\n\n"
+    facts += "(isa personKnowsTrickComponent Predicate)\n(arity personKnowsTrickComponent 2)\n(arg1Isa personKnowsTrickComponent Person)\n(arg2Isa personKnowsTrickComponent TrickComponent)\n\n"
+    facts += "(<== (personKnowsTrickComponent ?person ?trickComponent)\n (personKnowsTrick ?person ?trick)\n (trickContains ?trick ?trickComponent))\n\n"
+    facts += "(isa personCanLearnTrick Predicate)\n(arity personCanLearnTrick 2)\n(arg1Isa personCanLearnTrick Person)\n(arg2Isa personCanLearnTrick SkateboardingTrick)\n"
+    facts += "(<== (personCanLearnTrick ?person ?trick)\n (personKnowsTrickComponent ?person (BoardRotation ?direction ?boardRotation))\n (personKnowsTrickComponent ?person (BodyRotation ?direction ?bodyRotation))\n (personKnowsTrickComponent ?person (BoardFlip ?flip-direction ?boardFlip))\n"
+    facts += " (trickContains ?trick (BoardRotation ?direction ?boardRotation))\n (trickContains ?trick (BodyRotation ?direction ?bodyRotation))\n (trickContains ?trick (BoardFlip ?flip-direction ?boardFlip))\n"
+    facts += " (not (personKnowsTrick ?person ?trick)))\n\n"
 
     const file = new Blob([facts], {
       type: "text/plain",
     });
     element.href = URL.createObjectURL(file);
-    element.download = `nu-skateboarding.krf`;
+    element.download = `SkateboardingFacts.krf`;
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
   }
@@ -227,10 +238,7 @@ function App() {
           </div>
       </div>
   );
-
-  // return (
-  //   
-  // )
 }
 
 export default App
+
