@@ -1,35 +1,35 @@
 Trick Name,Alternative Name,Board Rotation,Body Rotation,Rotation Direction,Board Flip,Difficulty
 Ollie,,,,,,1
 Bs Shove-it,,180,,Clockwise,,1
-Fs Shove-it,,180,,Counter-Clockwise,,2
-Fs Body Varial,,,180,Counter-Clockwise,,1
+Fs Shove-it,,180,,Counter-clockwise,,2
+Fs Body Varial,,,180,Counter-clockwise,,1
 Bs Body Varial,,,180,Clockwise,,1
-Fs 180,,180,180,Counter-Clockwise,,1
+Fs 180,,180,180,Counter-clockwise,,1
 Bs 180,,180,180,Clockwise,,3
 Kickflip,,,,,Kickflip,4
 Heelflip,,,,,Heelflip,5
 Varial Flip,,180,,Clockwise,Kickflip,5
-Hard Flip,,180,,Counter-Clockwise,Kickflip,7
-Varial Heel,,180,,Counter-Clockwise,Heelflip,6
+Hard Flip,,180,,Counter-clockwise,Kickflip,7
+Varial Heel,,180,,Counter-clockwise,Heelflip,6
 Inward Heel,,180,,Clockwise,Heelflip,7
-Fs Flip,,180,180,Counter-Clockwise,Kickflip,7
+Fs Flip,,180,180,Counter-clockwise,Kickflip,7
 Bs Flip,,180,180,Clockwise,Kickflip,7
 Bs 360 Shove-it,,360,,Clockwise,,4
-Fs 360 Shove-it,,360,,Counter-Clockwise,,5
+Fs 360 Shove-it,,360,,Counter-clockwise,,5
 Bs Big spin,,360,180,Clockwise,,4
-Fs Big spin,,360,180,Counter-Clockwise,,5
+Fs Big spin,,360,180,Counter-clockwise,,5
 360 Flip,Tre Flip,360,,Clockwise,Kickflip,6
-Lazer Flip,,360,,Counter-Clockwise,Heelflip,8
+Lazer Flip,,360,,Counter-clockwise,Heelflip,8
 Big Flip,,360,180,Clockwise,Kickflip,7
-Big Heel,,360,180,Counter-Clockwise,Heelflip,8
-Fs 360,,360,360,Counter-Clockwise,,6
+Big Heel,,360,180,Counter-clockwise,Heelflip,8
+Fs 360,,360,360,Counter-clockwise,,6
 Bs 360,,360,360,Clockwise,,6
-Fs 360 Flip,,360,360,Counter-Clockwise,Kickflip,10
+Fs 360 Flip,,360,360,Counter-clockwise,Kickflip,10
 Bs 360 Flip,,360,360,Clockwise,Heelflip,9
 Double Kickflip,Double Flip,,,,2 Kickflips,6
 Double Heelflip,Double Heel,,,,2 Heelflips,7
 Varial Double Flip,Nightmare Flip,180,,Clockwise,2 Kickflips,7
-Varial Double Heel,,180,,Counter-Clockwise,2 Heelflips,8
+Varial Double Heel,,180,,Counter-clockwise,2 Heelflips,8
 360 Double Flip,Tre Double Flip,360,,Clockwise,2 Kickflips,8
 Gazelle Spin,360 Big Spin,540,360,Clockwise,,9
 Gazelle Flip,360 Big Flip,540,360,Clockwise,Kickflip,10
