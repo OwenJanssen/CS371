@@ -218,6 +218,9 @@ function App() {
 
   return (
       <div>
+          <div style={{display: "flex", flexDirection: "row", marginTop: "3rem", justifyContent: "space-between"}}>
+            <h1>SkateS</h1><h1 style={{color: "green"}}>KOOL</h1>
+          </div>
           <label htmlFor="csvInput" style={{ display: "block" }}>
               Enter Skateboarding Tricks CSV File
           </label>
