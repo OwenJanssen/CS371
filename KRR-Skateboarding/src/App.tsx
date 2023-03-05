@@ -222,24 +222,11 @@ function App() {
   }
 
   return (
-      <div>
-          <div style={{display: "flex", flexDirection: "row", marginTop: "3rem", justifyContent: "space-between"}}>
-            <h1>SkateS</h1><h1 style={{color: "green"}}>KOOL</h1>
-          </div>
-          <label htmlFor="csvInput" style={{ display: "block" }}>
-              Enter Skateboarding Tricks CSV File
-          </label>
-          <input
-              onChange={handleFileChange}
-              id="csvInput"
-              name="file"
-              type="File"
-          />
-          
-          {file!=="" && <div>
-              <button onClick={handleParse}>Parse</button>
-          </div>}
     <div>
+      <div style={{display: "flex", flexDirection: "row", marginTop: "3rem", justifyContent: "space-between"}}>
+        <h1>SkateS</h1><h1 style={{color: "green"}}>KOOL</h1>
+      </div>
+
       <label htmlFor="csvInput" style={{ display: "block" }}>
         Enter Skateboarding Tricks CSV File
       </label>
@@ -254,10 +241,6 @@ function App() {
         <button onClick={handleParse}>Parse</button>
       </div>}
 
-      {file !== "" && <div>
-        <button onClick={handleParse}>Parse</button>
-      </div>}
-
       {parsed &&
         <div style={{ display: "flex", flexDirection: "row", marginTop: "3rem", justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
@@ -266,7 +249,7 @@ function App() {
           </div>
           <div>Highest Difficulty of Known Trick: {Math.max(...selectedTricks.map(t => {
             return parseInt(tricks.filter(trick => trick["Trick Name"] == t)[0]["Difficulty"])
-          }))}</div>
+          }), 0)}</div>
           <button style={{ backgroundColor: "green" }} onClick={() => { writePersonalFactsFile(); writeGeneralFactsFile(); }}>Download .krf files</button>
         </div>
       }
