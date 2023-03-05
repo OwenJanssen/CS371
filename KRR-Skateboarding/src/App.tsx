@@ -223,7 +223,7 @@ function App() {
 
   return (
     <div>
-      <div style={{display: "flex", flexDirection: "row", marginTop: "3rem", justifyContent: "space-between"}}>
+      <div style={{display: "flex", flexDirection: "row", marginTop: "3rem"}}>
         <h1>SkateS</h1><h1 style={{color: "green"}}>KOOL</h1>
       </div>
 
