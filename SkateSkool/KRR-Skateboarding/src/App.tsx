@@ -209,9 +209,6 @@ function App() {
     facts += "(<== (personCanLearnTrick ?person ?trick)\n(personNotKnowsTrick ?person ?trick)\n(personKnowsTrickComponent ?person (BoardRotation ?direction ?boardRotation))\n (personKnowsTrickComponent ?person (BodyRotation ?direction ?bodyRotation))\n (personKnowsTrickComponent ?person (BoardFlip ?flip-direction ?boardFlip))\n"
     facts += " (trickContains ?trick (BoardRotation ?direction ?boardRotation))\n (trickContains ?trick (BodyRotation ?direction ?bodyRotation))\n (trickContains ?trick (BoardFlip ?flip-direction ?boardFlip)))\n\n"
 
-    facts += "(isa personShouldLearnTrick Predicate)\n(arity personShouldLearnTrick 3)\n(arg1Isa personShouldLearnTrick Person)\n(arg2Isa personShouldLearnTrick Integer)\n(arg3Isa personShouldLearnTrick Skateboarding)"
-    facts += "(<== (personShouldLearnTrick ?person ?difficulty ?trick)\n (trickDifficulty ?trick ?trick-difficulty)\n (lessThanOrEqualTo ?trick-difficuly ?difficulty))"
-
     const file = new Blob([facts], {
       type: "text/plain",
     });
